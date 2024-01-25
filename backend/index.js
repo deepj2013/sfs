@@ -26,6 +26,7 @@ app.options("*", cors({ origin: '*', optionsSuccessStatus: 200 }));
 app.use(cors({ origin: "*", optionsSuccessStatus: 200 }));
 app.use(express.json())
 
+app.get('/', (req, res) => {req.send('hi server is on SFS');})
 app.get('/api', (req, res) => { res.send('Hello World, from serversfs express.') });
 // app.use('/api/admin', adminRoutes)
 // app.use('/api/user', userRoutes)
