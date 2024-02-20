@@ -13,6 +13,7 @@ import winston from 'winston';
 
 import adminRoutes from './src/routes/adminRoutes.js' 
 import authRoutes from './src/routes/authRoutes.js'
+import cspRoutes from './src/routes/cspRoutes.js'
 
 //connected to mongo database.
 mongoose.set('strictQuery', false);
@@ -64,6 +65,7 @@ app.get('/', (req, res) => {res.send('hi server is on SFS');})
 app.get('/api', (req, res) => { res.send('Hello World, from serversfs express.') });
 app.use('/api/admin', adminRoutes)
 app.use('/api/auth', authRoutes)
+app.use('/api/csp', cspRoutes)
 
 // app.use('/api/user', userRoutes)
 

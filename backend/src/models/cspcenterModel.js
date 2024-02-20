@@ -1,52 +1,77 @@
-
 import mongoose from "mongoose";
 
 // csp Schema Starts From Here
-const cspSchema = new mongoose.Schema({
-    cspCode:{ type: String, index: true , unique: true},
-    name: String,
+const cspSchema = new mongoose.Schema(
+  {
+    cspCode: {
+        type: String,
+        index: true,
+        unique: true,
+        required: [true, 'cspCode is required'],
+    },
+    name: {
+        type: String,
+        required: [true, 'Name is required'],
+    },
     email: {
         type: String,
         unique: true,
-        index: true ,
-        dropDups: true
+        index: true,
+        dropDups: true,
+        required: [true, 'Email is required'],
     },
     mobile: {
-        type:Number,
-        index: true ,
+        type: Number,
+        index: true,
         unique: true,
-        dropDups:true
+        dropDups: true,
+        required: [true, 'Mobile number is required'],
     },
-    status: Number, // 0 - intial , 1 - active, 2 - suspended , 3 - closed
-    password: String,
-    fathername: String,
-    zipCode:Number,
- // personal detail  
-    Dob: Number,
-    gender: String,
-    centerName:String,
-    Qualification: String,
-    socialCateogry: String,
-   //Addres detail
-    address:String,
-    city:String,
-    districtCode:Number,
-    district:String,
-    stateCode:Number,
-    state:String,
-    contrycode:Number,
-    contry:String,
-  //Financial Document 
-    panNumber:String,
-    adhar:String,
-    gst: String,
-    accountNo:String,
-    ifscCode:String,
-    bankName:String,
-    upiId:String,
-    activateDate: Number
-}, { timestamps: true });
+    status: {
+        type: Number,
+        required: [true, 'Status is required'], // 0 - initial, 1 - active, 2 - suspended, 3 - closed
+    },
+    password: {
+        type: String,
+        required: [true, 'Password is required'],
+    },
+    fathername: {
+        type: String,
+        required: [true, 'Father\'s name is required'],
+    },
+    zipCode: {
+        type: Number,
+        required: [true, 'Zip code is required'],
+    },
+    dob: { type: Number, required: [true, 'dob is required']},
+    // personal detail
+    gender: { type: String, default: null },
+    centerName: { type: String, default: null },
+    Qualification: { type: String, default: null },
+    socialCateogry: { type: String, default: null },
+    // Address detail
+    address: { type: String, default: null },
+    city: { type: String, default: null },
+    districtCode: { type: Number, default: null },
+    district: { type: String, default: null },
+    stateCode: { type: Number, default: null },
+    state: { type: String, default: null },
+    contrycode: { type: Number, default: null },
+    contry: { type: String, default: null },
+    // Financial Document
+    panNumber: { type: String, default: null },
+    adhar: { type: String, default: null },
+    gst: { type: String, default: null },
+    accountNo: { type: String, default: null },
+    ifscCode: { type: String, default: null },
+    bankName: { type: String, default: null },
+    upiId: { type: String, default: null },
+    activateDate: { type: Number, default: null },
+    
+  },
+  { timestamps: true }
+);
 
-const cspcenter = mongoose.model('cspcenter', cspSchema)
+const cspcenter = mongoose.model("cspcenter", cspSchema);
 
 export default cspcenter;

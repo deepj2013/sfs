@@ -84,7 +84,7 @@ export const getTokenOfUserService = async (userId) => {
 export const cspCreateService = async (requestData) => {
   try {
     
-    let { name, email, mobile, password, fathername, zipCode } = requestData;
+    let { name, email, mobile, password, fathername, zipCode, dob } = requestData;
     // Convert email to lowercase to ensure case-insensitive matching
     email = email.toLowerCase();
     // Check if an account with the same email or mobile already exists
@@ -119,9 +119,10 @@ export const cspCreateService = async (requestData) => {
       status: 0,
       fathername: fathername,
       zipCode: zipCode,
+      dob : dob
     };
     let csp = await cspcenter.create(cspObject);
-    await csp.save();
+    
     return csp;
   } catch (error) {
     throw new APIError(

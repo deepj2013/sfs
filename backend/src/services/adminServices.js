@@ -153,7 +153,7 @@ export const activatecspcodeService = async (cspCode, email, mobile) => {
     // Update the status of the CSP to 1
     let updateResult = await cspcenter.updateOne(
       { _id: getObjectId(cspId) },
-      { $set: { status: 1 } }
+      { $set: { status: 1 , activateDate: new Date()} }
     );
 
     // Check if the document was successfully updated
